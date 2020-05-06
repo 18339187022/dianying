@@ -3,7 +3,7 @@
         <!-- <Loading v-if="isLoading" />
         <Scroller v-else :handleToScroll="handleToScroll" :handleToTouchEnd="handleToTouchEnd"> -->
             <ul>
-                <li>
+                <!-- <li>
                     <div class="pic_show"><img src="/images/movie_1.jpg"></div>
                     <div class="info_list">
                         <h2>无名之辈</h2>
@@ -14,8 +14,8 @@
                     <div class="btn_mall">
                         购票
                     </div>
-                </li>
-                <!-- <li class="pullDown">{{ pullDownMsg }}</li>
+                </li> -->
+                <!-- <li class="pullDown">{{ pullDownMsg }}</li> -->
                 <li v-for="item in movieList" :key="item.id">
                     <div class="pic_show" @tap="handleToDetail(item.id)"><img :src="item.img | setWH('128.180')"></div>
                     <div class="info_list">
@@ -27,7 +27,7 @@
                     <div class="btn_mall">
                         购票
                     </div>
-                </li> -->
+                </li>
             </ul>
         <!-- </Scroller> -->
     </div>
@@ -39,14 +39,14 @@
 
 export default {
     name : 'NowPlaying',
-    // data(){
-    //     return {
-    //         movieList : [],
+     data(){
+         return {
+             movieList : []
     //         pullDownMsg : '',
     //         isLoading : true,
     //         prevCityId : -1
-    //     }
-    // },
+         }
+     },
     // activated(){
     //     var cityId = this.$store.state.city.id;
     //     if( this.prevCityId === cityId ){ return; }
@@ -95,6 +95,7 @@ export default {
     //     });
     // },
     // methods : {
+     mounted() {
     //     handleToDetail(movieId){
     //         //console.log(movieId);
     //         this.$router.push('/movie/detail/1/' + movieId);
@@ -106,20 +107,20 @@ export default {
     //     },
     //     handleToTouchEnd(pos){
     //         if( pos.y > 30 ){
-    //             this.axios.get('/api/movieOnInfoList?cityId=11').then((res)=>{
-    //                 var msg = res.data.msg;
-    //                 if( msg === 'ok' ){
+                 this.axios.get('/api/movieOnInfoList?cityId=10').then((res)=>{
+                     var msg = res.data.msg;
+                     if( msg === 'ok' ){
     //                     this.pullDownMsg = '更新成功';
     //                     setTimeout(()=>{
-    //                         this.movieList = res.data.data.movieList;
+                            this.movieList = res.data.data.movieList;
     //                         this.pullDownMsg = '';
     //                     },1000);
                         
-    //                 }
-    //             });
-    //         }
-    //     }
-    // }
+                     }
+                 });
+     //        }
+     //    }
+     }
 }
 </script>
 
