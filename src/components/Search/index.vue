@@ -52,32 +52,13 @@ export default {
     watch : {
         message(newVal){
              var that = this;
-            // var cityId = this.$store.state.city.id;
+            var cityId = this.$store.state.city.id;
              this.cancelRequest();
-            // this.axios.get('/api/searchList?cityId='+ cityId +'&kw='+newVal,{
-            //     cancelToken: new this.axios.CancelToken(function(c){
-            //         that.source = c;
-            //     })
-            // }).then((res)=>{
-            //     var msg = res.data.msg;
-            //     var movies = res.data.data.movies;
-            //     if(msg && movies){
-            //         this.moviesList = res.data.data.movies.list;
-            //     }
-            // }).catch((err) => {
-            //     if (this.axios.isCancel(err)) {
-            //         console.log('Rquest canceled', err.message); //请求如果被取消，这里是返回取消的message
-            //     } else {
-            //         //handle error
-            //         console.log(err);
-            //     }
-            // });
-            
-            this.axios.get('/api/searchList?cityId=10&kw='+newVal,{
+            this.axios.get('/api/searchList?cityId='+ cityId +'&kw='+newVal,{
                 cancelToken: new this.axios.CancelToken(function(c){
                     that.source = c;
-                    })
-                }).then((res)=>{
+                })
+            }).then((res)=>{
                 var msg = res.data.msg;
                 var movies = res.data.data.movies;
                 if(msg && movies){
