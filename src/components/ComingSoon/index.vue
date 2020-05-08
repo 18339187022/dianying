@@ -42,7 +42,7 @@ export default {
         return {
             comingList : [],
             isLoading : true,
-            //prevCityId : -1
+            prevCityId : -1
         };
     },
     activated(){
@@ -58,22 +58,22 @@ export default {
                 this.prevCityId = cityId;
             }
         })
-    }
-    // methods : {
-    //     handleToDetail(movieId){
-    //         this.$router.push('/movie/detail/2/' + movieId);
-    //     }
-	// }
-	// mounted(){
-	// 	this.axios.get('/api/movieComingList?cityId=10').then((res)=>{
-    //         var msg = res.data.msg;
-    //         if(msg === 'ok'){
-    //             this.comingList = res.data.data.comingList;
-    //             this.isLoading = false;
-    //             // this.prevCityId = cityId;
-    //         }
-    //     })
-	// }
+    },
+    methods : {
+        handleToDetail(movieId){
+            this.$router.push('/movie/detail/2/' + movieId);
+        }
+	},
+	mounted(){
+		this.axios.get('/api/movieComingList?cityId=10').then((res)=>{
+            var msg = res.data.msg;
+            if(msg === 'ok'){
+                this.comingList = res.data.data.comingList;
+                this.isLoading = false;
+                // this.prevCityId = cityId;
+            }
+        })
+	}
 }
 </script>
 
